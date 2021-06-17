@@ -1,26 +1,28 @@
 var Client = require("discord.js");
 var client = new Client.Client();
-var token = require("./token.json");
-client.login(token);
+const globalbot = {
+  commands: new Map(),
+  commandNoprefix: new Map()
+}
+
+var config = require("./config.json");
+
+client.login(config.TOKEN);
 
 client.on("ready", () => {
 	console.log("ok");
-	console.log(`Logged in as ${client.user.tag}!`);
-/*client.user.setPresence({
+	console.log(`Đã đăng nhập ${client.user.tag}`);
+client.user.setPresence({
 		activity: {
-			name: "ONICHAN",
+			name: "GAME",
 			type: "PLAYING"
 		},
 		status: "online"
-	})*/
+	})
 })
 
+var loadCmd = require("./load/loadCommand");
+return loadCmd({client, config, globalbot});
 
-client.on("message", async message => {
-	const axios = require("axios");
-	var content = message.content;
-        if (message.author.id != 841690351944335420 && content && content.split(" ").length == 2) {
-            var data = (await axios.get("http://simsimi.miraiproject.tk/api/linkword?ask=" + encodeURIComponent(content))).data;
-            return message.channel.send(data.text);
-        }
-});
+//Create webSever
+/*const app = require ("express") ();  app.get ('/', (req, res) => {res.send ("NTKhang");});app.listen(process.env. PORT);*/

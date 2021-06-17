@@ -4,8 +4,11 @@
   "description": "bot chat discord",
   "main": "index.js",
   "dependencies": {
+    "ascii-table": "0.0.9",
     "axios": "^0.21.1",
-    "discord.js": "^12.5.3"
+    "chalk": "^4.1.1",
+    "discord.js": "^12.5.3",
+    "fs-extra": "^10.0.0"
   },
   "devDependencies": {},
   "scripts": {
