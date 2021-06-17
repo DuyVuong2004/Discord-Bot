@@ -10,7 +10,6 @@ var config = require("./config.json");
 client.login(config.TOKEN);
 
 client.on("ready", () => {
-	console.log("ok");
 	console.log(`Đã đăng nhập ${client.user.tag}`);
 client.user.setPresence({
 		activity: {

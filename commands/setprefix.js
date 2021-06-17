@@ -9,7 +9,7 @@ module.exports.command = {
       if(!args[0]) return message.channel.send("Phần prefix cần đổi không được để trống");
       config.PREFIX = args[0];
       fs.writeFileSync(__dirname + `/../config.json`, JSON.stringify(config, null, 2));
-      message.channel.send("Đã đổi prefix thành "+ config.PREFIX);
+      message.channel.send("Đã đổi prefix thành "+ "\""+config.PREFIX+"\"");
     },
     
     event: ({message, client, args, config}) => {
