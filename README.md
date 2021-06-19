@@ -1,0 +1,3 @@
+# Discord-Bot
+
+BASIC BOT DISCORD MAKE BY NTKHANG
