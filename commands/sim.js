@@ -3,6 +3,7 @@ module.exports.command = {
   author: "NTKhang",
   use: "sim [on/off]",
   example: "sim on",
+  category: "game",
   descriptions: "Bật tắt simsimi",
   
     run: ({message, client, args}) => {

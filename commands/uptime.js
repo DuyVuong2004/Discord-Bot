@@ -3,6 +3,7 @@ module.exports.command = {
   author: "NTKhang",
   use: "uptime",
   example: "uptime",
+  category: "info",
   descriptions: "Xem thời gian bot hoạt động",
       run: ({message, client}) => {
       const timeStart = Date.now();

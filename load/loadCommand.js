@@ -40,31 +40,37 @@ for (const command of commands) {
 client.on("message", async message => {
   if(message.author.bot) return;
   const prefix = config.PREFIX;
-  if(!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split (/ +/g);
   var cmd = args.shift().toLowerCase();
   var command = globalbot.commands.get(cmd);
-  
-  if(command) {
-    try {
-      command.command.run({ args, message, client, globalbot, config });
+    if(message.content.startsWith(prefix)) {
+      if(command) {
+        try {
+          command.command.run({ args, message, client, globalbot, config });
+        }
+        catch(error) {
+          var infoe = error.stack.split("\n")[1];
+          infoe = infoe.slice(infoe.lastIndexOf(".js")+4);
+          infoe = infoe.slice(0, infoe.lastIndexOf(`)`));
+          console.log("Lỗi "+chalk.red(error) + "Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
+          message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error+" Line: "+infoe);
+        }
+      }
     }
-    catch(error) {
-      console.log("Error"+chalk.red(error) + " at event command: " + command.command.name);
-      message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error);
-      
-    }
-  }
   
   const cmdNoprefix = globalbot.commandNoprefix.get("event") || [];
 		for (const noprefix of cmdNoprefix) {
 			const commandModule = globalbot.commands.get(noprefix);
+			if(message.content.startsWith(prefix)) return;
 			try {
 				commandModule.command.event({ message, args, client, globalbot, config });
 			}
 			catch (error) {
-				console.log("Error: "+chalk.red(error) + " at event command: " + commandModule.command.name);
-				message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error)
+				var infoe = error.stack.split("\n")[1];
+          infoe = infoe.slice(infoe.lastIndexOf(".js")+4);
+          infoe = infoe.slice(0, infoe.lastIndexOf(`)`));
+          console.log("Lỗi "+chalk.red(error) + "Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
+          message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error+" Line: "+infoe);
 			}
 		}
   });

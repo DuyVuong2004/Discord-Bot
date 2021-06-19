@@ -3,6 +3,7 @@ module.exports.command = {
   author: "NTKhang",
   use: "setprefix [prefix muốn đổi]",
   example: "setprefix #",
+  category: "system",
   descriptions: "Đổi prefix của bot",
     run: ({ message, client, args, config }) => {
       const fs = require("fs-extra");

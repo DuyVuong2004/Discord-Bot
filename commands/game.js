@@ -3,6 +3,7 @@ module.exports.command = {
   author: "NTKhang",
   use: "game [on/off]",
   example: "game on",
+  category: "game",
   descriptions: "Bật tắt game nối chữ",
     run: ({message, args}) => {
       const fs = require("fs-extra");

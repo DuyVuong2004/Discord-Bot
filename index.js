@@ -1,3 +1,7 @@
+////////////////////////////////////////////
+//>>>>>>>>>>>>>MAKE BY NTKHANG<<<<<<<<<<<<//
+////////////////////////////////////////////
+
 var Client = require("discord.js");
 var client = new Client.Client();
 const globalbot = {
@@ -11,6 +15,7 @@ client.login(config.TOKEN);
 
 client.on("ready", () => {
 	console.log(`Đã đăng nhập ${client.user.tag}`);
+  console.log("Prefix: "+config.PREFIX); 
 client.user.setPresence({
 		activity: {
 			name: "GAME",
@@ -21,7 +26,9 @@ client.user.setPresence({
 })
 
 var loadCmd = require("./load/loadCommand");
-return loadCmd({client, config, globalbot});
+ loadCmd({client, config, globalbot});
 
 //Create webSever
-/*const app = require ("express") ();  app.get ('/', (req, res) => {res.send ("NTKhang");});app.listen(process.env. PORT);*/
+/*
+const app = require ("express") ();  app.get ('/', (req, res) => {res.send ("NTKhang");});app.listen(process.env. PORT);
+*/
