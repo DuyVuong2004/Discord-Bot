@@ -11,7 +11,7 @@ const globalbot = {
 
 var config = require("./config.json");
 
-client.login(process.env.TOKEN);
+client.login(config.TOKEN);
 
 client.on("ready", () => {
 	console.log(`Đã đăng nhập ${client.user.tag}`);

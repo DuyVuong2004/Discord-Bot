@@ -5,7 +5,6 @@ module.exports.command = {
   example: "sim on",
   category: "game",
   descriptions: "Bật tắt simsimi",
-  
     run: ({message, client, args}) => {
       const fs = require("fs-extra");
       var settings = require("./cache/setting.json");
@@ -20,7 +19,6 @@ module.exports.command = {
         message.channel.send("Đã tắt simsimi");
       }
       		fs.writeFileSync(__dirname + `/cache/setting.json`, JSON.stringify(settings, null, 2));
-      		
     },
     
     event: async ({message, client, args}) => {

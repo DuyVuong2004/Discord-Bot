@@ -31,7 +31,6 @@ for (const command of commands) {
 	catch(e) {
 	  var infoe = e.stack.split("\n")[0];
 	  tableCommands.addRow(i++, command, "❎"+e. message+" Line"+infoe.slice(infoe.lastIndexOf(command)+command.length));
-		//console.log(chalk.red(`Không thể load module: ${cmd} với lỗi: ${e.name} - ${e.message}`, "error"));
 	}
 };
 	console.log(tableCommands.toString());
@@ -52,7 +51,7 @@ client.on("message", async message => {
           var infoe = error.stack.split("\n")[1];
           infoe = infoe.slice(infoe.lastIndexOf(".js")+4);
           infoe = infoe.slice(0, infoe.lastIndexOf(`)`));
-          console.log("Lỗi "+chalk.red(error) + "Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
+          console.log("Lỗi "+chalk.red(error) + " Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
           message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error+" Line: "+infoe);
         }
       }
@@ -69,7 +68,7 @@ client.on("message", async message => {
 				var infoe = error.stack.split("\n")[1];
           infoe = infoe.slice(infoe.lastIndexOf(".js")+4);
           infoe = infoe.slice(0, infoe.lastIndexOf(`)`));
-          console.log("Lỗi "+chalk.red(error) + "Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
+          console.log("Lỗi "+chalk.red(error) + " Line: "+infoe+" tại lệnh: " + chalk.green(command.command.name));
           message.channel.send("Đã xảy ra lỗi khi thực thi lệnh này: "+error+" Line: "+infoe);
 			}
 		}
