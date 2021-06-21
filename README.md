@@ -1,1 +1,1 @@
-# Discord-Bot Basic Make By 
+# Discord-Bot Basic Make By NTKhang
